@@ -7,11 +7,11 @@ l_id = []
 l_long_id = []
 
 s = open(sys.argv[1], 'r')
-for line in SeqIO.parse(s, 'fasta'):
-    name, seq = line.id, line.seq.tostring()
-    l_long_id.append(re.split("\|", name)[2])
-    l_id.append(re.split("\|", name)[1])
-#print l_seq
+for line in s:
+    if line.startswith(">"):
+        l_long_id.append(re.split("\||=", line)[3])
+        l_id.append(re.split("\|", line)[1])
+#print l_long_id
 # '|' itself is a nulti-divider seperater. need \ to escape it to be used as a divider itself.
 #print len(l_id)
 dict_id = dict(zip(l_id, l_long_id))
