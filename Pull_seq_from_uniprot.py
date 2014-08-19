@@ -27,5 +27,6 @@ with open(sys.argv[2]) as f:
 
 out = open(sys.argv[3], 'w')
 for item in id_to_grab:
-    out.write('>%s\t%s\n' % (item, id_long))
+    out.write('%s\n' % item)
+#   out.write('>%s\t%s\n' % (item, id_long))
     out.write('%s\n' % dict_seq[item])
